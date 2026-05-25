@@ -10,7 +10,7 @@ title: "Cognitive Partners — The Future Thinks Together"
   <meta name="description" content="Automated AI Solutions That Intelligently Evolve With Your Needs." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -109,9 +109,10 @@ title: "Cognitive Partners — The Future Thinks Together"
     }
 
     .logo-img {
-      height: 200px;
-      width: auto;
+      width: 150px;
+      height: auto;
       display: block;
+      margin-bottom: 36px;
     }
 
     /* ── HERO ── */
@@ -151,16 +152,16 @@ title: "Cognitive Partners — The Future Thinks Together"
     }
 
     h1 {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Sora', 'Space Grotesk', 'Inter', sans-serif;
       font-weight: 800;
-      font-size: clamp(3rem, 8vw, 6.5rem);
-      line-height: 1.0;
-      letter-spacing: -0.02em;
+      font-size: clamp(64px, 8vw, 112px);
+      line-height: 0.95;
+      letter-spacing: -0.04em;
       color: #fff;
       opacity: 0;
       animation: fadeUp 0.8s ease 0.6s forwards;
       margin-bottom: 1.5rem;
-      max-width: 900px;
+      max-width: 1050px;
     }
 
     h1 .gradient-text {
@@ -336,9 +337,10 @@ title: "Cognitive Partners — The Future Thinks Together"
 
     @media (max-width: 640px) {
       header { padding: 1.25rem 1.5rem; }
-      .logo-img { height: 52px; }
+      .logo-img { width: 110px; }
       footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
       main { padding: 1rem 1.5rem 4rem; }
+      h1 { font-size: clamp(44px, 13vw, 68px); }
     }
   </style>
 </head>
@@ -363,9 +365,8 @@ title: "Cognitive Partners — The Future Thinks Together"
       <div class="eyebrow">The Future Thinks Together</div>
 
       <h1>
-        <span class="gradient-text">Intelligent</span> AI<br />
-        That Evolves<br />
-        With You
+        <span class="gradient-text">Intelligent AI</span><br />
+        That Evolves With You
       </h1>
 
       <p class="tagline">
