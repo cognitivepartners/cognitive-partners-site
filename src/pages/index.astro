@@ -1,0 +1,437 @@
+---
+title: "Cognitive Partners — The Future Thinks Together"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cognitive Partners — The Future Thinks Together</title>
+  <meta name="description" content="Automated AI Solutions That Intelligently Evolve With Your Needs." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cp-purple: #534AB7;
+      --cp-violet: #7B6FD4;
+      --cp-blue: #4A8FE7;
+      --cp-cyan: #00D4FF;
+      --cp-dark: #080810;
+      --cp-darker: #050508;
+      --cp-surface: #0F0F1A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--cp-darker);
+      color: #E8E8F0;
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── BACKGROUND ── */
+    .bg-canvas {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      animation: drift 20s ease-in-out infinite;
+    }
+
+    .orb-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(83,74,183,0.25) 0%, transparent 70%);
+      top: -100px; left: -150px;
+      animation-delay: 0s;
+    }
+
+    .orb-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(0,212,255,0.15) 0%, transparent 70%);
+      bottom: -50px; right: -100px;
+      animation-delay: -7s;
+    }
+
+    .orb-3 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(74,143,231,0.12) 0%, transparent 70%);
+      top: 40%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation-delay: -14s;
+    }
+
+    /* Grain overlay */
+    .bg-canvas::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      opacity: 0.35;
+      pointer-events: none;
+    }
+
+    /* Grid lines */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(83,74,183,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(83,74,183,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* ── LAYOUT ── */
+    .wrapper {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── HEADER ── */
+    header {
+      padding: 2rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      opacity: 0;
+      animation: fadeIn 1s ease 0.2s forwards;
+    }
+
+    .logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-mark {
+      width: 28px; height: 28px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, var(--cp-purple), var(--cp-cyan));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: white;
+    }
+
+    .header-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: rgba(0,212,255,0.6);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    /* ── HERO ── */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem 6rem;
+      text-align: center;
+    }
+
+    .eyebrow {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--cp-cyan);
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.4s forwards;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .eyebrow::before, .eyebrow::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cp-cyan));
+    }
+    .eyebrow::after {
+      background: linear-gradient(90deg, var(--cp-cyan), transparent);
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: #fff;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.6s forwards;
+      margin-bottom: 1.5rem;
+      max-width: 900px;
+    }
+
+    h1 .gradient-text {
+      background: linear-gradient(135deg, var(--cp-violet) 0%, var(--cp-cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .tagline {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-weight: 300;
+      color: rgba(232,232,240,0.65);
+      max-width: 560px;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.8s forwards;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── COMING SOON BADGE ── */
+    .coming-soon {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(83,74,183,0.12);
+      border: 1px solid rgba(83,74,183,0.3);
+      border-radius: 100px;
+      padding: 0.5rem 1.25rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(123,111,212,0.9);
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.9s forwards;
+      margin-bottom: 3rem;
+    }
+
+    .coming-soon-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--cp-cyan);
+      animation: glowPulse 2s ease-in-out infinite;
+    }
+
+    /* ── CTA ── */
+    .cta-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 1s forwards;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, var(--cp-purple), var(--cp-blue));
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      padding: 1rem 2.25rem;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(83,74,183,0.3), 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--cp-violet), var(--cp-cyan));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .btn-primary:hover::before { opacity: 1; }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 50px rgba(83,74,183,0.5), 0 8px 30px rgba(0,0,0,0.5);
+    }
+
+    .btn-primary span { position: relative; z-index: 1; }
+
+    .btn-arrow {
+      position: relative;
+      z-index: 1;
+      transition: transform 0.3s ease;
+    }
+    .btn-primary:hover .btn-arrow { transform: translateX(4px); }
+
+    .contact-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: rgba(232,232,240,0.4);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      transition: color 0.3s ease;
+    }
+    .contact-link:hover { color: var(--cp-cyan); }
+
+    /* ── DIVIDER LINE ── */
+    .hero-line {
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to bottom, transparent, rgba(83,74,183,0.5), transparent);
+      margin: 3rem auto 0;
+      opacity: 0;
+      animation: fadeIn 1s ease 1.4s forwards;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      position: relative;
+      z-index: 1;
+      padding: 2rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(83,74,183,0.1);
+      opacity: 0;
+      animation: fadeIn 1s ease 1.2s forwards;
+    }
+
+    .footer-left {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: rgba(232,232,240,0.25);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .footer-right {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.68rem;
+      color: rgba(232,232,240,0.25);
+      letter-spacing: 0.08em;
+    }
+
+    .footer-right a {
+      color: rgba(0,212,255,0.4);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .footer-right a:hover { color: var(--cp-cyan); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.5; box-shadow: 0 0 4px var(--cp-cyan); }
+      50% { opacity: 1; box-shadow: 0 0 10px var(--cp-cyan); }
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(20px, -20px) rotate(2deg); }
+      50% { transform: translate(-10px, 15px) rotate(-1deg); }
+      75% { transform: translate(15px, 10px) rotate(1deg); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      header { padding: 1.5rem; }
+      footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
+      main { padding: 2rem 1.5rem 4rem; }
+      .header-tag { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-canvas">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="bg-grid"></div>
+
+  <div class="wrapper">
+    <header>
+      <div class="logo">
+        <div class="logo-mark">CP</div>
+        Cognitive Partners
+      </div>
+      <div class="header-tag">cognitivepartners.ai</div>
+    </header>
+
+    <main>
+      <div class="eyebrow">The Future Thinks Together</div>
+
+      <h1>
+        <span class="gradient-text">Intelligent</span> AI<br />
+        That Evolves<br />
+        With You
+      </h1>
+
+      <p class="tagline">
+        Automated AI solutions that intelligently evolve with your needs —
+        built for the businesses ready to think differently.
+      </p>
+
+      <div class="coming-soon">
+        <div class="coming-soon-dot"></div>
+        Full site coming soon
+      </div>
+
+      <div class="cta-group">
+        <a href="https://api.leadconnectorhq.com/widget/bookings/cognitive-partners-discovery-call-2700" class="btn-primary" target="_blank" rel="noopener">
+          <span>Book a Discovery Call</span>
+          <svg class="btn-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="mailto:hello@cognitivepartners.ai" class="contact-link">hello@cognitivepartners.ai</a>
+      </div>
+
+      <div class="hero-line"></div>
+    </main>
+
+    <footer>
+      <div class="footer-left">© 2026 Cognitive Partners</div>
+      <div class="footer-right">
+        <a href="mailto:hello@cognitivepartners.ai">hello@cognitivepartners.ai</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
