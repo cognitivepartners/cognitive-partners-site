@@ -34,7 +34,6 @@ title: "Cognitive Partners — The Future Thinks Together"
       overflow-x: hidden;
     }
 
-    /* ── BACKGROUND ── */
     .bg-canvas {
       position: fixed;
       inset: 0;
@@ -71,7 +70,6 @@ title: "Cognitive Partners — The Future Thinks Together"
       animation-delay: -14s;
     }
 
-    /* Grain overlay */
     .bg-canvas::after {
       content: '';
       position: absolute;
@@ -81,7 +79,6 @@ title: "Cognitive Partners — The Future Thinks Together"
       pointer-events: none;
     }
 
-    /* Grid lines */
     .bg-grid {
       position: fixed;
       inset: 0;
@@ -93,7 +90,6 @@ title: "Cognitive Partners — The Future Thinks Together"
       pointer-events: none;
     }
 
-    /* ── LAYOUT ── */
     .wrapper {
       position: relative;
       z-index: 1;
@@ -104,44 +100,18 @@ title: "Cognitive Partners — The Future Thinks Together"
 
     /* ── HEADER ── */
     header {
-      padding: 2rem 3rem;
+      padding: 1.5rem 2.5rem;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       opacity: 0;
       animation: fadeIn 1s ease 0.2s forwards;
     }
 
-    .logo {
-      font-family: 'Syne', sans-serif;
-      font-weight: 700;
-      font-size: 1.1rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .logo-mark {
-      width: 28px; height: 28px;
-      border-radius: 6px;
-      background: linear-gradient(135deg, var(--cp-purple), var(--cp-cyan));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.75rem;
-      font-weight: 800;
-      color: white;
-    }
-
-    .header-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      color: rgba(0,212,255,0.6);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
+    .logo-img {
+      height: 72px;
+      width: auto;
+      display: block;
     }
 
     /* ── HERO ── */
@@ -151,19 +121,19 @@ title: "Cognitive Partners — The Future Thinks Together"
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 4rem 2rem 6rem;
+      padding: 2rem 2rem 6rem;
       text-align: center;
     }
 
     .eyebrow {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
+      font-size: 0.88rem;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
       color: var(--cp-cyan);
       opacity: 0;
       animation: fadeUp 0.8s ease 0.4s forwards;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.75rem;
       display: flex;
       align-items: center;
       gap: 0.75rem;
@@ -172,7 +142,7 @@ title: "Cognitive Partners — The Future Thinks Together"
     .eyebrow::before, .eyebrow::after {
       content: '';
       display: block;
-      width: 40px;
+      width: 50px;
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--cp-cyan));
     }
@@ -211,7 +181,6 @@ title: "Cognitive Partners — The Future Thinks Together"
       margin-bottom: 3.5rem;
     }
 
-    /* ── COMING SOON BADGE ── */
     .coming-soon {
       display: inline-flex;
       align-items: center;
@@ -237,7 +206,6 @@ title: "Cognitive Partners — The Future Thinks Together"
       animation: glowPulse 2s ease-in-out infinite;
     }
 
-    /* ── CTA ── */
     .cta-group {
       display: flex;
       flex-direction: column;
@@ -300,7 +268,6 @@ title: "Cognitive Partners — The Future Thinks Together"
     }
     .contact-link:hover { color: var(--cp-cyan); }
 
-    /* ── DIVIDER LINE ── */
     .hero-line {
       width: 1px;
       height: 80px;
@@ -345,7 +312,6 @@ title: "Cognitive Partners — The Future Thinks Together"
     }
     .footer-right a:hover { color: var(--cp-cyan); }
 
-    /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -368,12 +334,11 @@ title: "Cognitive Partners — The Future Thinks Together"
       75% { transform: translate(15px, 10px) rotate(1deg); }
     }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 640px) {
-      header { padding: 1.5rem; }
+      header { padding: 1.25rem 1.5rem; }
+      .logo-img { height: 52px; }
       footer { padding: 1.5rem; flex-direction: column; gap: 0.5rem; text-align: center; }
-      main { padding: 2rem 1.5rem 4rem; }
-      .header-tag { display: none; }
+      main { padding: 1rem 1.5rem 4rem; }
     }
   </style>
 </head>
@@ -387,11 +352,11 @@ title: "Cognitive Partners — The Future Thinks Together"
 
   <div class="wrapper">
     <header>
-      <div class="logo">
-        <div class="logo-mark">CP</div>
-        Cognitive Partners
-      </div>
-      <div class="header-tag">cognitivepartners.ai</div>
+      <img
+        src="/Cognitive Partners social - logo-5.png"
+        alt="Cognitive Partners"
+        class="logo-img"
+      />
     </header>
 
     <main>
